@@ -5,7 +5,7 @@ import NotesComponent from './components/Notes.component';
 const DivContainer = styled.div`
     display: flex;
     align-items: center;
-    padding-top: 5rem;
+    padding-top: 11rem;
     flex-direction: column;
 `; 
 
@@ -36,7 +36,7 @@ function App() {
   const [breakNote, setBreakNoteState] = useState({});
 
   const checkingApi = async () =>{
-    const res =  await fetch('http://breaking-bad-quotes.herokuapp.com/v1/quotes');
+    const res =  await fetch('https://breaking-bad-quotes.herokuapp.com/v1/quotes');
     const data = await res.json();
 
     setBreakNoteState(data[0]);

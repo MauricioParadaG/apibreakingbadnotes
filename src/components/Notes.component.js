@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const NoteContainer = styled.div`
-    padding: 3rem;
+    padding: 1rem;
     border-radius: .5rem;
     background-color: #fff;
     max-width: 800px;
