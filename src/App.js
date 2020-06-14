@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from '@emotion/styled';
+import NotesComponent from './components/Notes.component';
 
 const DivContainer = styled.div`
     display: flex;
@@ -17,13 +18,16 @@ const ButtonNotes = styled.button`
    padding: 1rem 3rem;
    font-size: 2rem;
    border: 2px solid black;   
+   transition: background-size .5s ease;
 
-   &:hover{
+   :hover{
         cursor: pointer;
+        background-size: 700px;
     }
 `; 
 
 
+////////////////////////////////////////////
 
 
 
@@ -34,12 +38,21 @@ function App() {
   const checkingApi = async () =>{
     const res =  await fetch('http://breaking-bad-quotes.herokuapp.com/v1/quotes');
     const data = await res.json();
-    
+
     setBreakNoteState(data[0]);
   };
 
+  useEffect(() => {
+    checkingApi()
+
+  }, []);
+
   return (
     <DivContainer>
+      <NotesComponent
+        breakNoteState = {breakNote}
+      />
+
       <ButtonNotes
         onClick={() => checkingApi()}
       >
